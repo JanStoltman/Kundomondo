@@ -6,6 +6,7 @@ import com.example.yggdralisk.kundomondo.entities.Person;
 import com.example.yggdralisk.kundomondo.entities.Run;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
 
 import java.sql.SQLException;
@@ -22,9 +23,7 @@ public class DataGetter {
     private static DbHelper dbHelper;
 
     public DataGetter(Context context) throws SQLException {
-        if (dbHelper == null) {
-            dbHelper = OpenHelperManager.getHelper(context, DbHelper.class);
-        }
+        dbHelper = new DbHelper(context);
 
         peopleDao =  dbHelper.getPersonDao();
     }
@@ -32,18 +31,17 @@ public class DataGetter {
        return peopleDao.queryForAll();
     }
 
-    public Person getUserById(int userId) throws SQLException {
-        QueryBuilder<Person,Integer> builder = peopleDao.queryBuilder();
-        builder.where().eq("personId",userId);
-
-        return builder.query().get(0);
-    }
-
     public Person getUserByNick(String nick) throws SQLException {
         QueryBuilder<Person,Integer> builder = peopleDao.queryBuilder();
         builder.where().eq("nick", nick);
 
         return builder.query().get(0);
+    }
+
+    public void removeUser(String nick) throws SQLException {
+        DeleteBuilder<Person,Integer> builder = peopleDao.deleteBuilder();
+        builder.where().eq("nick", nick);
+        builder.delete();
     }
 
     public void putPerson(Person person) throws SQLException {

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="300dp"
+    android:layout_height="600dp"
+    android:background="#444444"
+    android:padding="10sp"
+    android:id ="@+id/pop_up">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pop_up_nick"
+        android:hint="Nick"
+        android:maxLines="1"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pop_up_height"
+        android:hint="Height (cm)"
+        android:maxLines="1"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pop_up_weight"
+        android:hint="Weight (kg)"
+        android:maxLines="1"
+        android:inputType="numberDecimal"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pop_up_add_button"
+            android:text="Add user"
+            android:textSize="15sp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pop_up_cancel_button"
+            android:text="Cancel"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</LinearLayout>

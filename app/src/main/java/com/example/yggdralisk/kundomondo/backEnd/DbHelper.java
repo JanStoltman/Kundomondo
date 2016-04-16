@@ -18,8 +18,8 @@ import java.sql.SQLException;
  */
 public class DbHelper extends OrmLiteSqliteOpenHelper {
 
-    private static final String DATABASE_NAME = "datas.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "dataPeople.db";
+    private static final int DATABASE_VERSION = 5;
 
     private Dao<Person, Integer> personDao;
 
@@ -35,8 +35,8 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
+            TableUtils.createTable(connectionSource, Person.class);
             TableUtils.createTable(connectionSource, Run.class);
-
         } catch (SQLException e) {
             Log.e(DbHelper.class.getName(), "Unable to create datbases", e);
         }
@@ -46,6 +46,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
             try {
                 TableUtils.dropTable(connectionSource, Person.class, true);
+                TableUtils.dropTable(connectionSource, Run.class, true);
                 onCreate(database, connectionSource);
             } catch (SQLException e) {
                 Log.e(DbHelper.class.getName(), "Unable to upgrade database from version " + oldVersion + " to new "

@@ -2,22 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/holder_user_nick"/>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/holder_total_burned"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/holder_total_ran"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/holder_user_nick"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/pink" />
+        <Button
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:id="@+id/remove_user_button"
+            android:gravity="center"
+            android:text="-"
+            android:paddingLeft="5dp"
+            android:paddingTop="1dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/holder_total_burned"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/pink" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/holder_total_ran"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/pink"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
 
 </LinearLayout>

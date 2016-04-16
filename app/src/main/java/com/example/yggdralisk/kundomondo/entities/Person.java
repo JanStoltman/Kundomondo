@@ -11,11 +11,11 @@ import java.util.Collection;
 /**
  * Created by yggdralisk on 14.04.16.
  */
-@DatabaseTable(tableName = "People")
+@DatabaseTable
 public class Person {
     @DatabaseField(columnName = "totalDistance")
     double totalDistance;
-    @DatabaseField(columnName = "nick",id = true)
+    @DatabaseField(columnName = "nick", id = true)
     String nick;
     @DatabaseField(columnName = "weight")
     double weight;
@@ -23,17 +23,15 @@ public class Person {
     int height;
     @DatabaseField(columnName = "totalBurnedCalories")
     double totalBurnedCalories;
-    @ForeignCollectionField(eager = true,columnName = "personRuns")
+    @ForeignCollectionField(eager = true, columnName = "personRuns")
     public Collection<Run> runs;
 
-    public double buredCalories(double distance)
-    {
-        totalBurnedCalories += distance*(0.75* weight *2.20462262);
-        return distance*(0.75* weight *2.20462262);
+    public double buredCalories(double distance) {
+        totalBurnedCalories += distance * (0.75 * weight * 2.20462262);
+        return distance * (0.75 * weight * 2.20462262);
     }
 
-    public Person()
-    {
+    public Person() {
 
     }
 
@@ -57,8 +55,7 @@ public class Person {
         return totalBurnedCalories;
     }
 
-    public void addRun(Run run)
-    {
+    public void addRun(Run run) {
         runs.add(run);
     }
 

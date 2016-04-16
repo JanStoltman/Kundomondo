@@ -6,7 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * Created by yggdralisk on 14.04.16.
  */
-@DatabaseTable(tableName = "runs")
+@DatabaseTable
 public class Run {
     @DatabaseField(id = true,columnName = "runId")
     int id;
@@ -14,6 +14,8 @@ public class Run {
     double distance;
     @DatabaseField(columnName = "caloriesBurned")
     double caloriesBurned;
+    @DatabaseField(foreign = true)
+    protected Person owner;
 
     public Run()
     {
