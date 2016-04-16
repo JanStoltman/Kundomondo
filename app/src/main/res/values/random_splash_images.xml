@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="splash_drawables">
+        <item>@drawable/splash_1</item>
+        <item>@drawable/splash_2</item>
+        <item>@drawable/splash_3</item>
+        <item>@drawable/splash_4</item>
+        <item>@drawable/splash_5</item>
+        <item>@drawable/splash_6</item>
+        <item>@drawable/splash_7</item>
+        <item>@drawable/splash_8</item>
+    </array>
+</resources>
