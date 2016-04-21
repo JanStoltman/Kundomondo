@@ -24,7 +24,6 @@ public class DataGetter {
 
     public DataGetter(Context context) throws SQLException {
         dbHelper = new DbHelper(context);
-
         peopleDao =  dbHelper.getPersonDao();
     }
     public List<Person> getUsers() throws SQLException {
@@ -55,5 +54,9 @@ public class DataGetter {
         temp.addRun(run);
         peopleDao.createOrUpdate(temp);
         return person;
+    }
+
+    public ArrayList<Run> getRunsByNick(String nick) throws SQLException {
+        return new ArrayList<>(getUserByNick(nick).runs);
     }
 }

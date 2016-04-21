@@ -14,6 +14,8 @@ public class Run {
     double distance;
     @DatabaseField(columnName = "caloriesBurned")
     double caloriesBurned;
+    @DatabaseField(columnName = "time")
+    String time;
     @DatabaseField(foreign = true)
     protected Person owner;
 
@@ -38,4 +40,6 @@ public class Run {
     public double getCaloriesBurned() {
         return caloriesBurned;
     }
+
+    public String getTime(){return time;}
 }
