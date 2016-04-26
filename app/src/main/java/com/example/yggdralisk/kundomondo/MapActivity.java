@@ -21,6 +21,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -61,13 +62,13 @@ public class MapActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mainMeter.setText(String.format(Locale.ROOT, "Km %f\nCal %f", km, kcl));
+        mainMeter.setText(String.format(Locale.ROOT, "Km %.3f\nCal %.0f", km, kcl));
 
         if (googleMap == null) {
             googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.main_map)).getMap();
         }
 
-        if(googleMap != null) {
+        if (googleMap != null) {
             googleMap.setMyLocationEnabled(true);
 
             googleMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
@@ -85,23 +86,28 @@ public class MapActivity extends AppCompatActivity {
                     newPosition = new LatLng(arg0.getLatitude(), arg0.getLongitude());
 
                     int tempDist = (int) CalcDistance(oldPosition, newPosition);
-                    km += tempDist/1000;
+                    km += tempDist / 100;
 
-                    kcl += (int)person.buredCalories(tempDist);
+                    kcl += (int) person.buredCalories(tempDist)/100;
 
                     mainMeter.setText(String.format(Locale.ROOT, "Km %.3f\nCal %.0f", km, kcl));
+
+                    googleMap.addPolyline(new PolylineOptions()
+                            .add(oldPosition,
+                                    newPosition)
+                            .geodesic(true));
+
                     oldPosition = newPosition;
                 }
             });
         }
 
-        PowerManager mgr = (PowerManager)getApplicationContext().getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"MyWakeLock");
+        PowerManager mgr = (PowerManager) getApplicationContext().getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyWakeLock");
         wakeLock.acquire();
     }
 
-    public double CalcDistance(LatLng oldPosition, LatLng newPosition)
-    {
+    public double CalcDistance(LatLng oldPosition, LatLng newPosition) {
         float[] results = new float[1];
         Location.distanceBetween(oldPosition.latitude, oldPosition.longitude,
                 newPosition.latitude, newPosition.longitude, results);
@@ -138,8 +144,8 @@ public class MapActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         try {
-            if(km>0 && kcl > 0)
-            dataGetter.addPersonRun(person,new Run(km, kcl));
+            if (km > 0 && kcl > 0)
+                dataGetter.addPersonRun(person, new Run(km, kcl));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -149,8 +155,8 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         try {
-            if(km>0 && kcl > 0)
-            dataGetter.addPersonRun(person,new Run(km, kcl));
+            if (km > 0 && kcl > 0)
+                dataGetter.addPersonRun(person, new Run(km, kcl));
         } catch (SQLException e) {
             e.printStackTrace();
         }
