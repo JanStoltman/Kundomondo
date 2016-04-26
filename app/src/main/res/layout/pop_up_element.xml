@@ -2,10 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="300dp"
     android:layout_height="600dp"
-    android:background="#444444"
+    android:background="@color/colorPrimary"
+    android:layout_gravity="center"
+    android:foregroundGravity="center"
     android:padding="10sp"
     android:id ="@+id/pop_up">
     <EditText
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pop_up_nick"
@@ -13,6 +16,7 @@
         android:maxLines="1"
         android:inputType="text"/>
     <EditText
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pop_up_height"
@@ -20,6 +24,7 @@
         android:maxLines="1"
         android:inputType="number"/>
     <EditText
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pop_up_weight"

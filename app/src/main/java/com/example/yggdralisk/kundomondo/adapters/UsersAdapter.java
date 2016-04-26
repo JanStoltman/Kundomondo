@@ -53,7 +53,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(upActivity.getApplicationContext(), MapActivity.class);
+                Intent intent = new Intent(upActivity, MapActivity.class);
                 intent.putExtra("UserNick", vh.userNick.getText().toString());
                 upActivity.startActivity(intent);
             }

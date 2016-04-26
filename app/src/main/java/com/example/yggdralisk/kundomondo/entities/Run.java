@@ -8,7 +8,7 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 @DatabaseTable
 public class Run {
-    @DatabaseField(id = true,columnName = "runId")
+    @DatabaseField(columnName = "runId",generatedId = true)
     int id;
     @DatabaseField(columnName = "distance")
     double distance;
@@ -24,7 +24,7 @@ public class Run {
 
     }
 
-    public Run(double caloriesBurned, double distance) {
+    public Run(double distance, double caloriesBurned) {
         this.caloriesBurned = caloriesBurned;
         this.distance = distance;
     }

@@ -30,9 +30,8 @@ public class RunsAdapter extends RecyclerView.Adapter<RunsAdapter.RunViewHolder>
     @Override
     public RunsAdapter.RunViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.run_element, parent, false);
-        RunViewHolder runViewHolder = new RunViewHolder(v);
-        runViewHolder.
-        return ;
+        RunViewHolder r = new RunViewHolder(v);
+        return r;
     }
 
     @Override
@@ -49,6 +48,7 @@ public class RunsAdapter extends RecyclerView.Adapter<RunsAdapter.RunViewHolder>
         TextView runTime;
         TextView runCalories;
         TextView runDistance;
+
         public RunViewHolder(View itemView) {
             super(itemView);
             runTime = (TextView) itemView.findViewById(R.id.run_time);
